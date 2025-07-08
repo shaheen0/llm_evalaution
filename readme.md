@@ -2,8 +2,8 @@
 #### 1. Clone the Repository
 
 ```bash
-git clone <https://github.com/shaheen0/llm_evalaution.git>
-cd <llm_evaluation>
+git clone https://github.com/shaheen0/llm_evalaution.git
+cd llm_evaluation
 ```
 
 
