@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Summarizer</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="formContainer">
+      <h1>📝 Text Summarizer ✨</h1>
+
+      <form action="/summarize" id="summarizeForm" method="post">
+        <div class="form-group">
+          <label for="text">Enter your text:</label>
+          <textarea id="text" name="text" rows="10" cols="50" required></textarea>
+        </div>
+        <button type="submit">Summarize</button>
+      </form>
+
+      <div id="result" class="result-container" style="white-space: pre-wrap"></div>
+    </div>
+
+    <script>
+      document
+        .getElementById("summarizeForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const text = document.getElementById("text").value;
+
+          const resultDiv = document.getElementById("result");
+          resultDiv.innerHTML = `<p>Generating summary...</p>`;
+
+          try {
+            const response = await fetch("/summarize", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ text }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+              resultDiv.innerHTML = `<p><strong>Summary:</strong><br>${data.summary}</p>`;
+            } else {
+              resultDiv.innerHTML = `<p><strong>Error:</strong> ${data.error}</p>`;
+            }
+          } catch (error) {
+            resultDiv.innerHTML = `<p><strong>Error:</strong> ${error.message}</p>`;
+          }
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+launchdarkly-server-sdk==9.11.1
+fastapi>=0.114.1
+fastapi-cli>=0.0.5
+openai>=1.58.1
+python-dotenv==1.0.1
+openai
+requests
