@@ -26,13 +26,7 @@ def generate(**kwargs):
     """
     import uuid
     user_id = str(uuid.uuid4())
-    context = (
-        Context.builder(user_id)
-        .kind('user')
-        .set('email', 'hafsa@scceleration.pk')
-        .build()
-    )
-    # context = Context.builder(user_id).kind('user').name('Hafsa').build()
+    context = Context.builder(user_id).kind('user').name('Hafsah').build()
     flag_enabled = ldclient.get().variation("llm_testing", context, True)
     ldclient.get().track(user_id , context)
     print('SDK successfully initialized')

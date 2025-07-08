@@ -18,17 +18,6 @@ async def summarize_text(request: Request):
         return {"success": True, "summary": result}
     except Exception as e:
         return {"success": False, "error": str(e)}
-# @app.post("/summarize")
-# async def summarize_text(request: Request):
-#     try:
-#         form_data = await request.json()
-#         input_text = form_data.get('text')
-#         user_type = form_data.get('user_type', 'default')
-#         result = summarize(text=input_text, customer_type=user_type)
-#         return {"success": True, "summary": result}
-#     except Exception as e:
-#         return {"success": False, "error": str(e)}
-
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
     with open("static/index.html") as f:
