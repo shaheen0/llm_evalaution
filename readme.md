@@ -1,7 +1,7 @@
 
 #### 1. Clone the Repository
 
-``bash
+```bash
 git clone <your-repo-url>
 cd <project-folder>
 ```
@@ -10,6 +10,7 @@ cd <project-folder>
 ```bash
 pip install -r requirements.txt
 ```
+
 #### 3. Create a `.env` File
 
 In the root of your project folder, create a file named `.env` and add the following:
@@ -27,6 +28,9 @@ Use Uvicorn to start the server:
 
 ```bash
 uvicorn app:app --reload
+```
 OR
+
+```bash
 fastapi dev app.py
 ```
